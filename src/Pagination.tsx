@@ -1,11 +1,19 @@
-import React from 'react'
+// Pagination.tsx
+import React from 'react';
 
-const Pagination = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+
+interface PaginationProps {
+  gotoNextPage: () => void;
+  gotoPrevPage: () => void;
 }
 
-export default Pagination
+const Pagination: React.FC<PaginationProps> = ({ gotoNextPage, gotoPrevPage }) => {
+  return (
+    <div>
+     {gotoPrevPage && <button type="button" className="btn-btn primary" onClick={gotoPrevPage}>Previous</button>}
+      {gotoNextPage && <button type="button" className="btn-btn primary" onClick={gotoNextPage}>Next</button>}
+    </div>
+  );
+};
+
+export default Pagination;
