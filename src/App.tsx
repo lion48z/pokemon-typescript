@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PokemonList from './PokemonList';
 import axios from 'axios';
 import Pagination from './Pagination';
+import Header from './Header';
 
 
 interface AppProps {}
@@ -13,6 +14,9 @@ const App: React.FC<AppProps> = () => {
   const [nextPageUrl, setNextPageUrl] = useState<string | null>(null);
   const [prevPageUrl, setPrevPageUrl] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const pokemonLogoUrl =(pokemonName:string):string => {
+    return `https://th.bing.com/th/id/OIP.3ooPgvFEm0j3GCjt4Rbs2QHaCq?w=347&h=126&c=7&r=0&o=5&pid=1.7`
+  }
 
   useEffect(() => {
     
@@ -36,6 +40,7 @@ const App: React.FC<AppProps> = () => {
 
   return (
     <>
+    <Header logoUrl={pokemonLogoUrl} />
       <PokemonList pokemon={pokemon} />
       <Pagination 
       gotoNextPage={nextPageUrl ? goToNextPage : noop}
